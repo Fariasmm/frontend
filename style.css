@@ -1,0 +1,356 @@
+/* ==========================================
+   VARIABLES Y CONFIGURACIÓN BASE
+   ========================================== */
+:root {
+    --color-principal: #2b1055; /* Morado oscuro del logo */
+    --color-secundario: #f1b80d; /* Amarillo / Dorado del logo */
+    --color-oscuro: #1a1a1a;
+    --color-claro: #f9f9f9;
+    --color-blanco: #ffffff;
+    --color-gris: #666666;
+    --fuente-base: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fuente-base);
+    color: var(--color-oscuro);
+    background-color: var(--color-blanco);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ==========================================
+   HEADER / NAVEGACIÓN
+   ========================================== */
+.main-header {
+    background-color: var(--color-blanco);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.main-logo {
+    height: 50px; /* Ajusta el tamaño según prefieras */
+    width: auto;
+    display: block;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-principal);
+    position: relative;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-secundario);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================
+   MAIN / HERO SECTION
+   ========================================== */
+.hero-section {
+    background: linear-gradient(135deg, var(--color-principal) 0%, #15052e 100%);
+    color: var(--color-blanco);
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Toque geométrico deportivo de fondo */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(45deg, transparent 45%, rgba(241, 184, 13, 0.05) 45%, rgba(241, 184, 13, 0.05) 55%, transparent 55%);
+    background-size: 30px 30px;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-section p {
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--color-secundario);
+    color: var(--color-principal);
+    padding: 12px 35px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(241, 184, 13, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(241, 184, 13, 0.5);
+}
+
+/* ==========================================
+   SECTION / PLANES
+   ========================================== */
+.plans-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.plans-section h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.plans-section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-secundario);
+    margin: 10px auto 0;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    align-items: stretch;
+}
+
+.plan-card {
+    background-color: var(--color-claro);
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para el plan destacado (Premium) */
+.plan-card.featured {
+    background-color: var(--color-blanco);
+    border: 2px solid var(--color-principal);
+    box-shadow: 0 10px 30px rgba(43, 16, 85, 0.1);
+}
+
+.plan-card.featured:hover {
+    box-shadow: 0 15px 35px rgba(43, 16, 85, 0.15);
+}
+
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--color-secundario);
+    color: var(--color-principal);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.plan-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--color-principal);
+}
+
+.plan-description {
+    color: var(--color-gris);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    flex-grow: 1; /* Empuja el precio hacia abajo si hay menos texto */
+}
+
+.plan-price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: var(--color-oscuro);
+}
+
+.plan-price span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-gris);
+}
+
+.btn-card {
+    display: block;
+    text-align: center;
+    border: 2px solid var(--color-principal);
+    color: var(--color-principal);
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.btn-card:hover {
+    background-color: var(--color-principal);
+    color: var(--color-blanco);
+}
+
+.btn-featured {
+    background-color: var(--color-principal);
+    color: var(--color-blanco);
+}
+
+.btn-featured:hover {
+    background-color: #1a053a;
+    border-color: #1a053a;
+}
+
+/* ==========================================
+   FOOTER / CONTACTO
+   ========================================== */
+.main-footer {
+    background-color: var(--color-oscuro);
+    color: var(--color-blanco);
+    padding: 60px 20px 20px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-footer h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    color: var(--color-secundario);
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-info strong {
+    color: var(--color-blanco);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-info a:hover {
+    color: var(--color-secundario);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive para pantallas chicas */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+}
