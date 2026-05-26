@@ -1,183 +1,40 @@
-/* ==========================================
-   VARIABLES Y CONFIGURACIÓN BASE
-   ========================================== */
-:root {
-    --color-principal: #2b1055; /* Morado oscuro del logo */
-    --color-secundario: #f1b80d; /* Amarillo / Dorado */
-    --color-oscuro: #1a1a1a;
-    --color-claro: #f9f9f9;
-    --color-blanco: #ffffff;
-    --color-gris: #888888;
-    --color-borde: #dddddd;
-    --fuente-base: 'Poppins', sans-serif;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Mantenemos tu fuente y colores institucionales */
 body {
-    font-family: var(--fuente-base);
-    background-color: var(--color-claro);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* ==========================================
-   TARJETA DE LOGIN
-   ========================================== */
-.login-container {
-    background-color: var(--color-blanco);
-    width: 100%;
-    max-width: 420px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* Header del Logo */
-.login-header {
-    background-color: var(--color-blanco);
-    padding: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.login-logo {
-    height: 45px;
-    width: auto;
-    display: block;
-}
-
-/* Cuerpo del Login */
-.login-main {
-    padding: 40px 35px;
-}
-
-.login-main h2 {
-    font-size: 1.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var(--color-oscuro);
-    text-align: center;
-    margin-bottom: 30px;
+.custom-title {
+    color: #1a1a1a;
     letter-spacing: -0.5px;
 }
 
-/* ==========================================
-   FORMULARIO Y CAMPOS
-   ========================================== */
-.login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.form-group label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--color-principal);
-}
-
-.form-group input {
-    width: 100%;
-    padding: 12px 16px;
-    font-family: var(--fuente-base);
-    font-size: 0.95rem;
-    border: 2px solid var(--color-borde);
-    border-radius: 25px; /* Bordes ovalados como el boceto */
-    outline: none;
-    transition: all 0.3s ease;
-    color: var(--color-oscuro);
-}
-
-/* Efecto al hacer clic en las cajas de texto */
-.form-group input:focus {
-    border-color: var(--color-principal);
-    box-shadow: 0 0 0 3px rgba(43, 16, 85, 0.1);
-}
-
-/* Placeholder con un tono gris suave */
-.form-group input::placeholder {
-    color: var(--color-gris);
+.custom-label {
+    color: #2b1055; /* Morado de tu logo */
     font-size: 0.9rem;
 }
 
-/* ==========================================
-   BOTÓN DE INGRESO
-   ========================================== */
-.btn-submit {
-    margin-top: 10px;
-    background-color: var(--color-principal);
-    color: var(--color-blanco);
+/* Customizar el foco de los inputs de Bootstrap */
+.form-control:focus {
+    border-color: #2b1055;
+    box-shadow: 0 0 0 0.25rem rgba(43, 16, 85, 0.15);
+}
+
+/* Botón personalizado con la identidad de SportClub */
+.btn-sport {
+    background-color: #2b1055; /* Morado */
+    color: #ffffff;
     border: none;
-    padding: 14px;
-    font-family: var(--fuente-base);
-    font-size: 1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-radius: 25px; /* Estilo ovalado idéntico al wireframe */
-    cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(43, 16, 85, 0.2);
 }
 
-.btn-submit:hover {
+.btn-sport:hover {
     background-color: #1a053a;
+    color: #ffffff;
     transform: translateY(-1px);
-    box-shadow: 0 6px 15px rgba(43, 16, 85, 0.3);
 }
 
-.btn-submit:active {
-    transform: translateY(0);
-}
-
-/* ==========================================
-   DIVISOR Y ENLACES INFERIORES
-   ========================================== */
-.divider {
-    border: none;
-    height: 1px;
-    background-color: #eeeeee;
-    margin: 30px 0 20px 0;
-}
-
-.login-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    font-size: 0.85rem;
-}
-
-.footer-link {
-    color: var(--color-gris);
-    text-decoration: none;
-    transition: color 0.2s ease;
-    font-weight: 500;
-}
-
-.footer-link:hover {
-    color: var(--color-secundario);
-    text-decoration: underline;
-}
-
-.separator {
-    color: #cccccc;
-    user-select: none;
+/* Efecto hover en los links inferiores */
+.custom-link:hover {
+    color: #f1b80d !important; /* Amarillo del logo al pasar el mouse */
+    text-decoration: underline !important;
 }
