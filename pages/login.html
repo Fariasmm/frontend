@@ -6,7 +6,7 @@
     <title>SportClub - Iniciar Sesión</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="login-style.css">
+    <link rel="stylesheet" href="../css/login-style.css">
 </head>
 <body class="bg-light d-flex align-items-center min-vh-100">
 
@@ -17,13 +17,13 @@
                 <div class="card shadow border-0 rounded-4 overflow-hidden">
                     
                     <div class="card-header bg-white border-bottom text-center py-4">
-                        <img src="logo_empresa_letra_v1.png" alt="SportClub Logo" class="img-fluid" style="height: 60px;">
+                        <img src="../assets/img/logo_empresa_letra_v1.png" alt="SportClub Logo" class="img-fluid" style="height: 60px;">
                     </div>
                     
                     <div class="card-body p-4 p-sm-5">
-                        <h2 class="text-center fw-bold text-uppercase mb-4 custom-title">Iniciar Sesión</h2>
+                        <h2 class="text-center fw-bold text-uppercase mb-4 custom-title" style="font-size: 1.6rem;">Iniciar Sesión</h2>
                         
-                        <form action="#" method="POST">
+                        <form action="dashboard-usuario.html" method="GET">
                             <div class="mb-3">
                                 <label for="email" class="form-label fw-semibold custom-label">Email:</label>
                                 <input type="email" class="form-control rounded-pill px-3 py-2" id="email" placeholder="Ingresa tu correo" required>
@@ -40,12 +40,20 @@
                         <hr class="my-4 text-muted">
                         
                         <div class="d-flex justify-content-center align-items-center gap-2 small text-center">
-                            <a href="#" class="text-secondary text-decoration-none custom-link">¿Olvidaste tu contraseña?</a>
+                            <a href="recuperar.html" class="text-secondary text-decoration-none custom-link">¿Olvidaste tu contraseña?</a>
                             <span class="text-black-50">|</span>
                             <a href="registro.html" class="text-secondary text-decoration-none custom-link">Registrarse</a>
                         </div>
-                    </div>
 
+                        <div class="mt-4 pt-3 border-top text-center" style="font-size: 0.8rem;">
+                            <p class="text-muted mb-2 fw-semibold">Accesos de revisión rápida para el docente:</p>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="dashboard-coach.html" class="btn btn-sm btn-outline-success py-1 px-2" style="font-size: 0.75rem;">Dash Coach</a>
+                                <a href="dashboard-admin.html" class="btn btn-sm btn-outline-danger py-1 px-2" style="font-size: 0.75rem;">Dash Admin</a>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
