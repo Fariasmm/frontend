@@ -2,50 +2,117 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SportClub - Dashboard Coach</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
 </head>
 <body class="bg-light">
+    
     <nav class="navbar navbar-dark bg-success px-4 py-3 shadow-sm">
         <span class="navbar-brand fw-bold">🏋️‍♂️ SportClub - Panel Coach</span>
-        <div class="text-white small">Profesor en Línea | <a href="login.html" class="text-white-50 ms-2">Cerrar Sesión</a></div>
+        <div class="text-white small d-flex align-items-center gap-3">
+            <button id="btnVerPerfil" class="btn btn-outline-light btn-sm fw-semibold rounded-pill px-3">
+                <i class="bi bi-person-circle me-1"></i> Mi Perfil
+            </button>
+            <div>
+                <span id="coachName" class="fw-semibold text-white">Profesor</span> | 
+                <button id="logoutBtn" class="btn btn-link text-white-50 p-0 ms-1 text-decoration-none">Cerrar Sesión</button>
+            </div>
+        </div>
     </nav>
 
     <div class="container my-5">
-        <div class="alert alert-info text-center fw-semibold">
-            🟢 Estructura Base del Dashboard Coach requerida en Evaluación 1.
-        </div>
+        
+        <div id="profileAlert" class="alert d-none rounded-3 py-2 small text-center shadow-sm mb-4" role="alert"></div>
 
-        <div class="card shadow-sm border-0 rounded-3 mb-4">
+        <div id="perfilContainer" class="card shadow border-0 rounded-4 mb-5 d-none">
+            <div class="card-header bg-white border-bottom py-3 d-flex justify-content-between align-items-center">
+                <h3 class="h5 fw-bold mb-0 text-success"><i class="bi bi-gear-fill me-2"></i>Gestionar Mi Perfil</h3>
+                <button type="button" class="btn-close" id="btnCerrarPerfil"></button>
+            </div>
             <div class="card-body p-4">
-                <h3 class="h5 fw-bold mb-3 text-success">Lista de Alumnos Asignados</h3>
-                <table class="table table-hover align-middle">
-                    <thead class="table-dark">
-                        <tr><th>RUT</th><th>Alumno</th><th>Plan</th><th>Progreso</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>12.345.678-9</td><td>Juan Pérez</td><td>Premium</td><td><span class="badge bg-success">Excelente</span></td></tr>
-                        <tr><td>13.456.789-0</td><td>María López</td><td>Básico</td><td><span class="badge bg-warning text-dark">Regular</span></td></tr>
-                        <tr><td>14.567.890-1</td><td>Carlos Plaza</td><td>Premium</td><td><span class="badge bg-success">Excelente</span></td></tr>
-                        <tr><td>15.678.901-2</td><td>Ana Gómez</td><td>Familiar</td><td><span class="badge bg-success">Excelente</span></td></tr>
-                        <tr><td>16.789.012-3</td><td>Luis Fuentes</td><td>Básico</td><td><span class="badge bg-danger">Inactivo</span></td></tr>
-                    </tbody>
-                </table>
+                <div class="row">
+                    <div class="col-md-6 border-end mb-4 mb-md-0">
+                        <h4 class="h6 fw-bold text-muted uppercase mb-3">Información Personal</h4>
+                        <form id="profileForm" novalidate>
+                            <div class="mb-3">
+                                <label for="profName" class="form-label small fw-semibold">Nombre Completo</label>
+                                <input type="text" class="form-control" id="profName">
+                                <div class="invalid-feedback">El nombre es obligatorio.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="profEmail" class="form-label small fw-semibold">Email (Bloqueado)</label>
+                                <input type="email" class="form-control bg-light" id="profEmail" disabled>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-sm px-4 rounded-pill fw-semibold">Guardar Cambios</button>
+                        </form>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h4 class="h6 fw-bold text-muted uppercase mb-3">Seguridad</h4>
+                        <form id="passwordForm" novalidate>
+                            <div class="mb-3">
+                                <label for="currentPassword" class="form-label small fw-semibold">Contraseña Actual</label>
+                                <input type="password" class="form-control" id="currentPassword" placeholder="••••••••">
+                                <div class="invalid-feedback">Ingresa tu contraseña actual.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="newPassword" class="form-label small fw-semibold">Nueva Contraseña</label>
+                                <input type="password" class="form-control" id="newPassword" placeholder="Mínimo 8 caracteres">
+                                <div class="invalid-feedback" id="newPassError">La contraseña debe tener al menos 8 caracteres.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmNewPassword" class="form-label small fw-semibold">Confirmar Nueva Contraseña</label>
+                                <input type="password" class="form-control" id="confirmNewPassword" placeholder="••••••••">
+                                <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+                            </div>
+                            <button type="submit" class="btn btn-outline-danger btn-sm px-4 rounded-pill fw-semibold">Actualizar Contraseña</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="card shadow-sm border-0 rounded-3">
-            <div class="card-body p-4">
-                <h3 class="h5 fw-bold mb-3 text-success">Horarios de Clases de la Semana</h3>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex justify-content-between align-middle"><strong>Lunes 09:00</strong> - Crossfit <span class="badge bg-secondary">12 Alumnos</span></li>
-                    <li class="list-group-item d-flex justify-content-between align-middle"><strong>Martes 10:30</strong> - Entrenamiento Funcional <span class="badge bg-secondary">15 Alumnos</span></li>
-                    <li class="list-group-item d-flex justify-content-between align-middle"><strong>Miércoles 09:00</strong> - Yoga Avanzado <span class="badge bg-secondary">8 Alumnos</span></li>
-                    <li class="list-group-item d-flex justify-content-between align-middle"><strong>Jueves 11:00</strong> - Spinning HIIT <span class="badge bg-secondary">20 Alumnos</span></li>
-                    <li class="list-group-item d-flex justify-content-between align-middle"><strong>Viernes 18:30</strong> - Power Boxing <span class="badge bg-secondary">14 Alumnos</span></li>
-                </ul>
+        <div id="mainDashboardContent">
+            <div class="card shadow-sm border-0 rounded-3 mb-4">
+                <div class="card-body p-4">
+                    <h3 class="h5 fw-bold mb-3 text-success">Lista de Alumnos Asignados</h3>
+                    <table class="table table-hover align-middle">
+                        <thead class="table-dark">
+                            <tr><th>RUT</th><th>Alumno</th><th>Plan</th><th>Progreso</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>12.345.678-9</td><td>Juan Pérez</td><td>Premium</td><td><span class="badge bg-success">Excelente</span></td></tr>
+                            <tr><td>13.456.789-0</td><td>María López</td><td>Básico</td><td><span class="badge bg-warning text-dark">Regular</span></td></tr>
+                            <tr><td>14.567.890-1</td><td>Carlos Plaza</td><td>Premium</td><td><span class="badge bg-success">Excelente</span></td></tr>
+                            <tr><td>15.678.901-2</td><td>Ana Gómez</td><td>Familiar</td><td><span class="badge bg-success">Excelente</span></td></tr>
+                            <tr><td>16.789.012-3</td><td>Luis Fuentes</td><td>Básico</td><td><span class="badge bg-danger">Inactivo</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body p-4">
+                    <h3 class="h5 fw-bold mb-3 text-success">Horarios de Clases de la Semana</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-middle"><strong>Lunes 09:00</strong> - Crossfit <span class="badge bg-secondary">12 Alumnos</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-middle"><strong>Martes 10:30</strong> - Entrenamiento Funcional <span class="badge bg-secondary">15 Alumnos</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-middle"><strong>Miércoles 09:00</strong> - Yoga Avanzado <span class="badge bg-secondary">8 Alumnos</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-middle"><strong>Jueves 11:00</strong> - Spinning HIIT <span class="badge bg-secondary">20 Alumnos</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-middle"><strong>Viernes 18:30</strong> - Power Boxing <span class="badge bg-secondary">14 Alumnos</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/coach.js" type="module"></script>
 </body>
 </html>
